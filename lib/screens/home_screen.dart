@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           } else if (state is WeatherInfoLoaded) {
             return InfoWidget();
           } else {
-            return Text('Error');
+            return Text('Something went wrong 😕');
           }
         },
       ),

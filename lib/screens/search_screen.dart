@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/Bloc/cubit/weather_cubit.dart';
 
-
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Search a City'),
       ),
@@ -22,13 +22,13 @@ class SearchScreen extends StatelessWidget {
               Navigator.pop(context);
             },
             decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              suffixIcon: Icon(Icons.search),
-              label: Text('Search '),
-              hintText: 'Enter City Name',
-              border: OutlineInputBorder(),
-            ),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                suffixIcon: Icon(Icons.search),
+                label: Text('Search '),
+                hintText: 'Enter City Name',
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder()),
           ),
         ),
       ),
