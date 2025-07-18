@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/Bloc/cubit/weather_cubit.dart';
 import 'package:weather_app/screens/search_screen.dart';
 import 'package:weather_app/widgets/info_widget.dart';
 import 'package:weather_app/widgets/no_info_widget.dart';
@@ -25,7 +27,19 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: InfoWidget(),
+      body: BlocBuilder<WeatherCubit, WeatherState>(
+        builder: (context, state) {
+          if (state is WeatherInitial) {
+            return NoInfoWidget();
+          } else if (state is WeatherInfoIsLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is WeatherInfoLoaded) {
+            return InfoWidget();
+          } else {
+            return Text('Error');
+          }
+        },
+      ),
     );
   }
 }
