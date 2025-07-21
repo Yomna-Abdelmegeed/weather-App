@@ -14,7 +14,8 @@ class WeatherCubit extends Cubit<WeatherState> {
       weatherModel = await Service(Dio()).getWeather(city: cityName);
       emit(WeatherInfoLoaded());
     } on Exception catch (e) {
-      emit(WeatherFailure(errorMessage: e.toString()));
+      emit(WeatherFailure(
+          errorMessage: e.toString().replaceFirst('Exception: ', '')));
     }
   }
 }

@@ -33,10 +33,15 @@ class HomeScreen extends StatelessWidget {
             return NoInfoWidget();
           } else if (state is WeatherInfoIsLoading) {
             return Center(child: CircularProgressIndicator());
-          } else if (state is WeatherInfoLoaded) {
-            return InfoWidget();
+          } else if (state is WeatherFailure) {
+            return Center(
+              child: Text(
+                state.errorMessage,
+                style: TextStyle(color: Colors.red, fontSize: 25),
+              ),
+            );
           } else {
-            return Text('Something went wrong 😕');
+            return InfoWidget();
           }
         },
       ),

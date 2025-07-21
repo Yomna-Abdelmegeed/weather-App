@@ -19,7 +19,7 @@ class Service {
     } on DioException catch (e) {
       String errorMessage = e.response?.data['error']['message'] ??
           'Oops! That was an error. Please try again later.';
-      throw errorMessage;
+      throw Exception(errorMessage);
     } catch (e) {
       log(e.toString());
       throw "Sorry, something went wrong. Try again shortly.";
